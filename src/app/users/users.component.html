@@ -1,0 +1,200 @@
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#">Sign out</a>
+    </li>
+  </ul>
+</nav>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/dashboard">
+              <span data-feather="home"></span>
+              Dashboard <span class="sr-only">(current)</span>
+            </a>
+
+        </ul>
+
+
+
+      </div>
+      <br>
+      <br>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <!-- <h1 class="h2">Dashboard</h1> -->
+
+
+        <div class="container">
+
+          <div class="container">
+            <div class="">
+              <h2>Users</h2>
+
+              <div class="row">
+                <div class="col-4">
+                  <form [formGroup]="addForm">
+                    <div class="form-group">
+                      <label> <strong>name</strong></label>
+                      <input type="text" class="form-control" formControlName="name" aria-describedby="emailHelp"
+                        placeholder="name">
+                    </div>
+                    <div class="form-group">
+                      <label> <strong>lastname</strong></label>
+                      <input type="text" class="form-control" formControlName="lastname" aria-describedby="emailHelp"
+                        placeholder="lastname">
+                    </div>
+                    <div class="form-group">
+                      <label> <strong>email</strong></label>
+                      <input type="text" class="form-control" formControlName="email" aria-describedby="emailHelp"
+                        placeholder="email">
+                    </div>
+                    <div class="form-group">
+                      <label> <strong>password</strong></label>
+                      <input type="text" class="form-control" formControlName="password" aria-describedby="emailHelp"
+                        placeholder="password">
+                    </div>
+                    <!--<label>creation date</label>
+                  <input type="text" formControlName="creationdate" placeholder="Date" class="span3"> -->
+
+                    <input type="submit" value="Submit" (click)="addUser()" class="btn btn-primary ">
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+
+            <br>
+            <br>
+
+            <div class="widget stacked widget-table action-table">
+
+              <div class="widget-content">
+
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>name</th>
+                      <th>lastname</th>
+                      <th>email</th>
+                      <th>password</th>
+
+                      <th class="td-actions"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let usr of user">
+                      <td>{{usr.name}}</td>
+                      <td>{{usr.lastname}}</td>
+                      <td>{{usr.email}}</td>
+                      <td>{{usr.password}}</td>
+
+
+                      <td class="td-actions">
+                        <a href="javascript:;" class="btn btn-small btn-primary" (click)="updateUser = usr">
+                          <!--boutton modif-->
+                          <i class="fa fa-upload"></i>
+                        </a>
+                        &nbsp; &nbsp;
+
+                        <button class="btn btn-danger" role="button" href="#" (click)="deleteUser(usr._id)">
+                          <!--bouton delet-->
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+
+                <div class="container">
+                  <div class="control-group" *ngIf="updateUser">
+                    <label class="control-label">Name</label>
+                    <div class="controls">
+                      <div class="row-fluid">
+                        <div class="span3">
+                          <input type="text" [(ngModel)]="updateUser.name" class="input-block-level">
+                        </div>
+
+                      </div>
+                    </div>
+                    <label class="control-label">Lastname</label>
+                    <div class="controls">
+                      <div class="row-fluid">
+                        <div class="span3">
+                          <input type="text" [(ngModel)]="updateUser.lastname" class="input-block-level">
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <label class="control-label">Email</label>
+                    <div class="controls">
+                      <div class="row-fluid">
+                        <div class="span3">
+                          <input type="text" [(ngModel)]="updateUser.email" class="input-block-level">
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <label class="control-label">Password</label>
+                    <div class="controls">
+                      <div class="row-fluid">
+                        <div class="span3">
+                          <input type="text" [(ngModel)]="updateUser.password" class="input-block-level">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="controls">
+                      <div class="row-fluid">
+                        <div class="span3">
+                          <input type="checkbox" [(ngModel)]="updateUser.access" class="input-block-level">
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <input type="submit" value="update" (click)="userToUpdate()" class="btn btn-success pull-right">
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+
+
+              </div>
+              <!-- /widget-content -->
+
+            </div>
+            <!-- /widget -->
+
+
+          </div>
+
+
+
+
+        </div>
+
+      </div>
+
+
+
+    </main>
+  </div>
+</div>
