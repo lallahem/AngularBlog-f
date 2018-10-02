@@ -59,15 +59,7 @@ export class UsersComponent implements OnInit {
     })
 
 
-    /** updateArticle() {
-       console.log(this.articleToUpdate);
-           this.apiService.editArticle(this.articleToUpdate._id  , this.articleToUpdate).subscribe(res => {
-             this.articleToUpdate = null;
-             this.ngOnInit();
-           })
-         
-     
-       }**/
+   
   }
 
   logoutBtn() {
