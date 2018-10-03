@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import * as jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-add-article',
@@ -12,6 +13,7 @@ export class AddArticleComponent implements OnInit {
 
   addForm: FormGroup
   article = {};
+  userId='';
 
   constructor(private router: Router, private apiService: ApiService) { }
 
@@ -27,7 +29,12 @@ export class AddArticleComponent implements OnInit {
     console.log(this.addForm.valid);
     if (this.addForm.valid) {
       
-      this.apiService.postArticle(this.addForm.value).subscribe(res => {
+      
+        const token = localStorage.getItem('token');
+        const userId = jwt_decode(token).data._id;
+        this.addForm.value['author'] = userId;
+        
+      this.apiService.postArticle( this.addForm.value).subscribe(res => {
         console.log(res.json());
         //this.ngOnInit();
       });

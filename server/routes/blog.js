@@ -23,7 +23,7 @@ router.post('/article', async(req, res) => {
 
 // find article 
 router.get('/article', async(req, res) => {
-    const result = await articleModel.find().populate({path : 'users'}).populate({path : 'comments'});
+    const result = await articleModel.find().populate({path : 'author'}).populate({path : 'comments'});
     res.send(result)
 
 });  
@@ -67,7 +67,7 @@ router.delete('/comment/:id', async(req, res) =>{
 
 //find comment
 router.get('/comment', async(req, res) => {
-    const result = await commentModel.find();
+    const result = await articleModel.find().populate({path : 'comments'});
     res.send(result);
 });
 

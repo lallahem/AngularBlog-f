@@ -17,10 +17,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UsersComponent } from './users/users.component';
 import { AuthGuard } from './auth.guard';
 import { RoleGuard } from './role.guard';
+import { CommentComponent } from './comment/comment.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'comment', component: CommentComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard, RoleGuard], data: { roles: ['admin','user'] } },
   { path: 'add', component: AddArticleComponent, canActivate: [AuthGuard] },
@@ -40,7 +42,8 @@ const routes: Routes = [
     AddArticleComponent,
     ListArticleComponent,
     NavbarComponent,
-    UsersComponent
+    UsersComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

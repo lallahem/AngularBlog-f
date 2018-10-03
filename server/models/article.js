@@ -9,7 +9,8 @@ const article = new mongoose.Schema({
     },
     author : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'user'
+        ref : 'users',
+        required : true
     },
     comments : [{
         type : mongoose.Schema.Types.ObjectId,

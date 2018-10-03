@@ -5,7 +5,7 @@ import { ApiService } from '../api.service';
 
 
 @Component({
-  selector: 'app-menu',
+  selector: 'app-menu', 
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
