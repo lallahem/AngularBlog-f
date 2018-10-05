@@ -18,6 +18,8 @@ import { UsersComponent } from './users/users.component';
 import { AuthGuard } from './auth.guard';
 import { RoleGuard } from './role.guard';
 import { CommentComponent } from './comment/comment.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -30,6 +32,8 @@ const routes: Routes = [
   { path: 'article/:idArticle', component: ListArticleComponent, canActivate: [AuthGuard] },
   { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];
+const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
+
 
 @NgModule({
   declarations: [
@@ -51,6 +55,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
+    SocketIoModule.forRoot(config),
   ],
   providers: [],
   bootstrap: [AppComponent]
