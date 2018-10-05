@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
     this.addForm = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]),
       content: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.minLength(3)]),
-
+      author : new FormControl('')
     });
     this.apiService.getArticle().subscribe(res => {
       console.log(res.json());
@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   }
   onAddClick() {
     if (this.addForm.valid) {
+      this.addForm.value.author = this.userId;
       this.apiService.postArticle(this.addForm.value).subscribe(res => {
         this.ngOnInit();
       });
